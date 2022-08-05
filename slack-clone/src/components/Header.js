@@ -19,7 +19,7 @@ function Header() {
       {/* Header Search */}
       <HeaderSearch>
         <SearchIcon />
-        <input placeholder="Search JustinSlack" />
+        <input placeholder="Search JF Technologies Slack" />
       </HeaderSearch>
 
       {/* Header Right */}
