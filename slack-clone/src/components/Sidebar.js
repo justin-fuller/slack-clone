@@ -2,6 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import CreateIcon from "@mui/icons-material/Create";
+import SidebarOption from "./SidebarOption";
+import InsertCommentIcon from "@mui/icons-material/InsertComment";
+import InboxIcon from "@mui/icons-material/Inbox";
+import DraftsIcon from "@mui/icons-material/Drafts";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import AppsIcon from "@mui/icons-material/Apps";
+import FileCopyIcon from "@mui/icons-material/FileCopy";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import AddIcon from "@mui/icons-material/Add";
 
 function Sidebar() {
   return (
@@ -16,6 +27,19 @@ function Sidebar() {
         </SideBarInfo>
         <CreateIcon />
       </SideBarHeader>
+
+      <SidebarOption Icon={InsertCommentIcon} title="Threads" />
+      <SidebarOption Icon={InboxIcon} title="Mentions & reactons" />
+      <SidebarOption Icon={DraftsIcon} title="Saved items" />
+      <SidebarOption Icon={BookmarkBorderIcon} title="Channel Browser" />
+      <SidebarOption Icon={PeopleAltIcon} title="People & user groups" />
+      <SidebarOption Icon={AppsIcon} title="Apps" />
+      <SidebarOption Icon={FileCopyIcon} title="File Browser" />
+      <SidebarOption Icon={ExpandLessIcon} title="Show less" />
+      <hr />
+      <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
+      <hr />
+      <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel" />
     </SideBarContainer>
   );
 }
@@ -29,6 +53,12 @@ const SideBarContainer = styled.div`
   border-top: 1px solid #49274b;
   max-width: 260px;
   margin-top: 60px;
+
+  > hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #49274b;
+  }
 `;
 
 const SideBarHeader = styled.div`
