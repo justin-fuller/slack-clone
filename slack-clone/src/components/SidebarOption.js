@@ -1,10 +1,33 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { enterRoom } from "../features/appSlice";
+import { db } from "../firebase";
 
-function SidebarOption({ Icon, title, addChannelOption }) {
-  const addChannel = () => {};
+function SidebarOption({ Icon, title, addChannelOption, id }) {
+  const dispatch = useDispatch();
 
-  const selectChannel = () => {};
+  const addChannel = () => {
+    const channelName = prompt("Please Enter the Channel Name");
+
+    if (channelName) {
+      //if channelName has a value, add a room with the channelName we just collected from the prompt
+      db.collection("rooms").add({
+        name: channelName,
+      });
+    }
+  };
+
+  const selectChannel = () => {
+    // if id is passed through as a prop, dispatch an id value to the global store
+    if (id) {
+      dispatch(
+        enterRoom({
+          roomId: id,
+        })
+      );
+    }
+  };
   return (
     <SidebarOptionContainer
       // if you have addChannelOption passed as a prop, trigger addChannel function, else, trigger selectChannel
@@ -49,4 +72,7 @@ const SidebarOptionContainer = styled.div`
   }
 `;
 
-const SidebarOptionChannel = styled.div``;
+const SidebarOptionChannel = styled.h3`
+  padding: 10px 0;
+  font-weight: 300;
+`;

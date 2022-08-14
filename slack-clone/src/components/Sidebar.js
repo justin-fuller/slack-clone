@@ -13,8 +13,12 @@ import FileCopyIcon from "@mui/icons-material/FileCopy";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddIcon from "@mui/icons-material/Add";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { db } from "../firebase";
 
 function Sidebar() {
+  const [channels, loading, error] = useCollection(db.collection("rooms"));
+
   return (
     <SideBarContainer>
       <SideBarHeader>
@@ -40,6 +44,13 @@ function Sidebar() {
       <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
       <hr />
       <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel" />
+
+      {/* whenever you have a map in react, make sure you have a key */}
+      {/* Go into channels, map through each of the documents, return the title, and render the title out as
+      a SidebarOption */}
+      {channels?.docs.map((doc) => (
+        <SidebarOption key={doc.id} id={doc.id} title={doc.data().name} />
+      ))}
     </SideBarContainer>
   );
 }
