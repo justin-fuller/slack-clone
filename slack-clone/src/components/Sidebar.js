@@ -26,7 +26,7 @@ function Sidebar() {
           <h2>JF Technologies</h2>
           <h3>
             <FiberManualRecordIcon />
-            Ruth Ann Carlson
+            Justin Fuller
           </h3>
         </SideBarInfo>
         <CreateIcon />
