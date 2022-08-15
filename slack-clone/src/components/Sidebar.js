@@ -14,10 +14,12 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddIcon from "@mui/icons-material/Add";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function Sidebar() {
-  const [channels, loading, error] = useCollection(db.collection("rooms"));
+  const [channels] = useCollection(db.collection("rooms"));
+  const [user] = useAuthState(auth);
 
   return (
     <SideBarContainer>
@@ -26,7 +28,7 @@ function Sidebar() {
           <h2>JF Technologies</h2>
           <h3>
             <FiberManualRecordIcon />
-            Justin Fuller
+            {user.displayName}
           </h3>
         </SideBarInfo>
         <CreateIcon />
